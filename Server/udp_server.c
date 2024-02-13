@@ -174,8 +174,8 @@ int main(int argc, char **argv) {
               {
                 byte_transfer_size= file_size- cumulatives_bytes_transferred;
               }
-              fread(buf, 1, byte_transfer_size, file_read);
-              n = sendto(sockfd, buf, strlen(buf), 0, (struct sockaddr *)&clientaddr, clientlen);
+              int bytes_sent=fread(buf, 1, byte_transfer_size, file_read);
+              n = sendto(sockfd, buf, bytes_sent, 0, (struct sockaddr *)&clientaddr, clientlen);
               if (n < 0)
                 error("ERROR in sendto");
               // cumulative count increments by an amount of byte_transfer_size.
@@ -306,4 +306,3 @@ int main(int argc, char **argv) {
   }
   return 0;
 }
-
