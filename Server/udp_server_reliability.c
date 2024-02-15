@@ -276,6 +276,7 @@ int main(int argc, char **argv) {
 
     // exiting command
     else if (!(strcmp(command, "exit"))) {
+      printf("Client is Done: Good Bye\n");
       break;
     }
     /*
@@ -283,6 +284,9 @@ int main(int argc, char **argv) {
      */
     else {
       // sends back command to the client.
+      bzero(command,1024);
+      //command="InvalidCommand";
+      strcpy(command,"InvalidCommand-NotUnderstood\n");
       n = sender(sockfd, command, 1024, 0, (struct sockaddr *)&clientaddr,
                  clientlen);
       if (n < 0)
