@@ -275,7 +275,7 @@ int main(int argc, char **argv) {
                    &serverlen);
       if (n < 0)
         error("ERROR in receiver");
-      printf("Invalid command\t");
+     // printf("Invalid command\t");
       printf("%s\n", buf);
     }
   }
